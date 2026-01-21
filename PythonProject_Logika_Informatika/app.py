@@ -4,14 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String
 from datetime import  date
-
+import  os
 app = Flask(__name__)
 
 
 class Base(DeclarativeBase):
     pass
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///university.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB.Query")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 

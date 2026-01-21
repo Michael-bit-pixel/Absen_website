@@ -3,10 +3,12 @@ FROM python:3.12
 WORKDIR /PythonProject_Logika_Informatika
 
 COPY . .
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install -r requirements.txt
+EXPOSE 8080
 
-CMD ["flask","run","--host=0.0.0.0"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
 
-EXPOSE 5000
+
 
