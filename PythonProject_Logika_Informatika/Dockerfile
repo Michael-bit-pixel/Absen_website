@@ -2,7 +2,7 @@ FROM python:3.12
 
 WORKDIR /PythonProject_Logika_Informatika
 
-COPY ./PythonProject_Logika_Informatika
+COPY . .
 
 RUN pip install -r requirements.txt
 
